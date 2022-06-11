@@ -23,10 +23,10 @@ jobs:
             uploaded_filename: htmark-linux-x86_64
             llvm_bin_path: /usr/lib/llvm-13/bin
 
-          - os: windows-2022
-            output_filename: htmark-out.exe
-            uploaded_filename: htmark-windows-x86_64
-            llvm_bin_path: C:\Program Files\LLVM\bin
+          # - os: windows-2022
+          #   output_filename: htmark-out.exe
+          #   uploaded_filename: htmark-windows-x86_64
+          #   llvm_bin_path: C:\Program Files\LLVM\bin
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
