@@ -1,6 +1,10 @@
+resolvers += Resolver.sonatypeRepo("snapshots")
 scalaVersion := "3.1.2"
+
+name := "htmark"
+
 enablePlugins(ScalaNativePlugin, BindgenPlugin, VcpkgPlugin)
-Global / onChangedBuildSource := ReloadOnSourceChanges
+
 import bindgen.interface.Binding
 
 vcpkgDependencies := Set("cmark")
@@ -12,7 +16,7 @@ nativeConfig := {
       conf.compileOptions ++ vcpkgCompilationArguments.value
     )
     .withLinkingOptions(
-      conf.linkingOptions ++ vcpkgLinkingArguments.value 
+      conf.linkingOptions ++ vcpkgLinkingArguments.value
     )
 }
 bindgenBindings := Seq(
@@ -23,3 +27,5 @@ bindgenBindings := Seq(
     clangFlags = List("-I" + vcpkgManager.value.includes("cmark").toString)
   )
 )
+
+Global / onChangedBuildSource := ReloadOnSourceChanges
