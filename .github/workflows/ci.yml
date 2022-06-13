@@ -77,7 +77,7 @@ jobs:
         if: runner.os != 'Windows'
 
       - name: CI (windows)
-        run: sbt 'run README.md'
+        run: sbt "run README.md"
         shell: cmd
         if: runner.os == 'Windows'
         env: 
