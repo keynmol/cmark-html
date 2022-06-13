@@ -56,9 +56,6 @@ jobs:
           fi
         if: runner.os != 'Windows'
 
-      - name: Build binary (unix like)
-        run: sbt nativeLink
-        if: runner.os != 'Windows'
       
       - name: Configure Pagefile
         uses: al-cheb/configure-pagefile-action@v1.2
@@ -74,9 +71,13 @@ jobs:
           choco install sbt --version=1.6.1
           clang --version
         if: runner.os == 'Windows'
+      
+      - name: CI (Unix-like)
+        run: sbt 'run README.md'
+        if: runner.os != 'Windows'
 
       - name: CI (windows)
-        run: sbt nativeLink
+        run: sbt 'run README.md'
         shell: cmd
         if: runner.os == 'Windows'
         env: 
